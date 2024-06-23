@@ -59,8 +59,10 @@ func replaceEnvVars(v reflect.Value) {
 		} else if field.Kind() == reflect.String {
 			fieldValue := field.String()
 			if strings.HasPrefix(fieldValue, "${") && strings.HasSuffix(fieldValue, "}") {
+
 				envVarName := fieldValue[2 : len(fieldValue)-1]
 				envVarValue := os.Getenv(envVarName)
+
 				if envVarValue != "" {
 					field.SetString(envVarValue)
 				} else {
