@@ -141,9 +141,28 @@ func (c *Client) DeleteOne(ctx context.Context, params QueryParams) (*mongo.Dele
 	return result, nil
 }
 
+// QueryMongoDBStruct executes a MongoDB query with abstracted parameters
+// and decodes the result directly into the provided struct.
+func (c *Client) QueryMongoDBStruct(ctx context.Context, params QueryParams, result interface{}) error {
+	collection := c.Database(params.Database).Collection(params.Collection)
+
+	// Execute the query and decode the result into the provided struct
+	err := collection.FindOne(ctx, params.Filter).Decode(result)
+	if err == mongo.ErrNoDocuments {
+		return fmt.Errorf("no documents found")
+	}
+	if err != nil {
+		return fmt.Errorf("failed to query MongoDB: %w", err)
+	}
+
+	return nil
+}
+
+/*
+
 // QueryMongoDB executes a MongoDB query with abstracted parameters
 // This method allows for more generic query operations, using the `map[string]interface{}` to handle unknown document structures.
-func (c *Client) QueryMongoDB(ctx context.Context, params QueryParams) (map[string]interface{}, error) {
+func (c *Client) QueryMongoDB(ctx context.Context, params QueryParams) (*map[string]interface{}, error) {
 	collection := c.Database(params.Database).Collection(params.Collection)
 
 	// Store the result in a map[string]interface{} since the structure is unknown
@@ -158,5 +177,6 @@ func (c *Client) QueryMongoDB(ctx context.Context, params QueryParams) (map[stri
 		return nil, fmt.Errorf("failed to query MongoDB: %w", err)
 	}
 
-	return result, nil
+	return &result, nil
 }
+*/

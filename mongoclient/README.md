@@ -31,7 +31,7 @@ import (
     "context"
     "log"
     "time"
-    "github.com/yourusername/mongoclient"
+    "github.com/cd-cloud-io/go-libs/mongoclient"
 )
 
 func main() {
