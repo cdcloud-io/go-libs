@@ -48,13 +48,13 @@ git push origin v1.0.0
 
    ```bash
    cd lib1
-   go mod init github.com/yourusername/my-repo/lib1
+   go mod init github.com/cdcloud-io/go_libs/lib1
 
    cd ../lib2
-   go mod init github.com/yourusername/my-repo/lib2
+   go mod init github.com/cdcloud-io/go_libs/lib2
 
    cd ../lib3
-   go mod init github.com/yourusername/my-repo/lib3
+   go mod init github.com/cdcloud-io/go_libs/lib3
    ```
 
    This will create a `go.mod` file for each library.
@@ -123,7 +123,7 @@ git push origin v1.0.0
 2. Commit the changes.
 3. Tag the new version: `git tag lib1/v1.1.0`.
 4. Push the tag: `git push origin lib1/v1.1.0`.
-5. Consumers can now update their dependencies to use `github.com/yourusername/my-repo/lib1 v1.1.0`.
+5. Consumers can now update their dependencies to use `github.com/cdcloud-io/go_libs/lib1 v1.1.0`.
 
 ### TODO
 

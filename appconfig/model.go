@@ -1,4 +1,4 @@
-package config
+package appconfig
 
 type Config struct {
 	App struct {
@@ -16,9 +16,4 @@ type Config struct {
 		HealthEndpoint string `yaml:"health_endpoint"`
 		InfoEndpoint   string `yaml:"info_endpoint"`
 	} `yaml:"server"`
-	Azure struct {
-		AzStorageAccountName string   `yaml:"az_storage_account_name"`
-		AzStorageAccountKey  string   `yaml:"az_storage_account_key"`
-		Queues               []string `yaml:"queues"`
-	} `yaml:"azure"`
 }

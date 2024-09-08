@@ -1,4 +1,4 @@
-module github.com/cdcloud-io/golib_mongo_c
+module github.com/cdcloud-io/go-libs/mongoclient
 
 go 1.22.4
 
