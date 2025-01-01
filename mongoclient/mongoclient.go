@@ -143,7 +143,7 @@ func (c *Client) DeleteOne(ctx context.Context, params QueryParams) (*mongo.Dele
 
 // QueryMongoDBStruct executes a MongoDB query with abstracted parameters
 // and decodes the result directly into the provided struct.
-func (c *Client) QueryMongoDBStruct(ctx context.Context, params QueryParams, result interface{}) error {
+func (c *Client) QueryMongoDBStruct(ctx context.Context, params QueryParams, result *interface{}) error {
 	collection := c.Database(params.Database).Collection(params.Collection)
 
 	// Execute the query and decode the result into the provided struct
